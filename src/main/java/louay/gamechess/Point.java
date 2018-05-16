@@ -18,12 +18,26 @@ public class Point {
     
     private final int x;
     private final int y;
-
+    /**
+     * A constructor for the coordinates
+     * x and y.
+     * @param x coordinate x
+     * @param y coordinate y
+     */
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
+    /**
+     * The <code>moves</code> method returns a list of allowed
+     * moves to a specific player according to his
+     * position at that moment, using all the possible
+     * moves of a knight piece and it checks if one 
+     * of this possible moves are already visited by 
+     * one of the players.
+     * @param visited A list of visited positions.
+     * @return A list of the possible moves
+     */
     public List<Point> moves(List<Point> visited) {
         Point[] all_possibilities = {new Point(x - 1, y - 2), new Point(x + 1, y - 2), new Point(x + 2, y - 1), new Point(x + 2, y + 1),
             new Point(x + 1, y + 2), new Point(x - 1, y + 2), new Point(x - 2, y + 1), new Point(x - 2, y - 1)};
@@ -37,11 +51,22 @@ public class Point {
         return ps;
     }
 
+    
+    /**
+     * This is a <code>toString</code> method which displays
+     * the x and y coordinate of a specific point.
+     */
     @Override
     public String toString() {
         return "{" + x + ", " + y + '}';
     }
-
+    /**
+     * The equals method is used to compare
+     * if a given point is already existing in
+     * visited point list in the moves method.
+     * @param obj 
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         Point other = (Point) obj;

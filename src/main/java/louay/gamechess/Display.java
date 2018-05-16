@@ -10,7 +10,21 @@ package louay.gamechess;
  * @author Louay
  */
 public class Display {
-
+    
+    /**
+     * The showBoard takes game as a parameter
+     * it simply displays on a specific position
+     * of the chess board starting from (0,0)
+     * ending with position (7,7)
+     * if its taken by the white
+     * or the black player or the point has been
+     * already visited by one of the players by using
+     * the pattern # ,if it is none of these cases
+     * we display a white space.
+     * 
+     * 
+     * @param game 
+     */
     public static void showBoard(Game game) {
         System.out.println("0 1 2 3 4 5 6 7");
         for (int i = 0; i < 8; i++) {

@@ -8,8 +8,10 @@ package louay.gamechess;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -18,19 +20,47 @@ import java.util.logging.Logger;
 public class Game {
 
     private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
+    
 
     boolean isWhitesTurn = true;
     private List<Point> visited = new ArrayList<>();
 
     private Point whitePlayer = new Point(0, 7);
     private Point blackPlayer = new Point(7, 0);
-
+    /**
+     * A <code>Game</code> constructor,
+     * where we add the initial positions
+     * of the white and black players.
+     */
     public Game() {
         visited.add(whitePlayer);
         visited.add(blackPlayer);
     }
-
+    /**
+     * The method <code>startGame</code> will start the game,
+     * in which we provide the possible moves for each player
+     * turn by turn, and whenever the game finishes will print
+     * out the winner of the game.
+     */
     public void startGame() {
+        
+        FileHandler f;
+        try {
+            f = new FileHandler("mylog.txt",50000,1, true);
+            f.setFormatter(new SimpleFormatter());
+            
+            LOGGER.addHandler(f);
+            
+            LOGGER.setUseParentHandlers(false);
+      
+            
+        } catch (Exception e) {
+        }
+        
+        LOGGER.log(Level.INFO,"The game started!");
+       
+        
+        
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -40,6 +70,7 @@ public class Game {
                 LOGGER.log(Level.INFO, "Closing scanner and breaking out of loop");
                 sc.close();
                 printWinner();
+                LOGGER.log(Level.INFO,"Game is over");
                 break;
             }
 
@@ -93,7 +124,10 @@ public class Game {
     public List<Point> getVisited() {
         return visited;
     }
-
+    /**
+     * It prints out for the player his allowed moves using indexes.
+     * @param allowed_moves 
+     */
     private void printAllowedMoves(List<Point> allowed_moves) {
         System.out.println("Allowed moves:");
         for (int i = 0; i < allowed_moves.size(); i++) {
@@ -101,7 +135,10 @@ public class Game {
         }
         System.out.print("\n");
     }
-
+    /**
+     * When the game finishes,
+     * it prints out the winner of the game.
+     */
     private void printWinner() {
         if (isWhitesTurn) {
             System.out.println("Game is over, black player won the game");

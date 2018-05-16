@@ -1,0 +1,4 @@
+May 16, 2018 7:16:04 PM louay.gamechess.Game startGame
+WARNING: 3 can cause out of bounds exception
+May 16, 2018 7:16:20 PM louay.gamechess.Game startGame
+WARNING: 4 can cause out of bounds exception

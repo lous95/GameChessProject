@@ -7,7 +7,10 @@ import java.util.logging.LogManager;
  * @author Louay
  */
 public class Main {
-    
+        /**
+         * This is the main method.
+         * @param args 
+         */
     public static void main(String[] args) {
         /*LogManager.getLogManager().reset();*/
         

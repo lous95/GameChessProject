@@ -120,7 +120,10 @@ public class Game {
     public Point getBlack() {
         return blackPlayer;
     }
-
+    /**
+     * Returns the visited positions. 
+     * @return a list of visited positions. 
+     */
     public List<Point> getVisited() {
         return visited;
     }
